@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+<EditText android:text="Text to play"  
+android:id="@+id/EditTextToPlay" android:layout_width="fill_parent"
+android:layout_height="wrap_content"></EditText>
+
+<Button android:text="Play" android:id="@+id/ButtonPlay" 
+android:layout_height="50dp" android:layout_width="120dp"></Button>
+
+<Button android:text="Listen" android:id="@+id/ButtonListen" 
+android:layout_height="50dp" android:layout_width="120dp"></Button>
+
+<TextView android:text="Status" android:id="@+id/TextStatus" 
+android:layout_width="fill_parent" android:layout_height="wrap_content" android:textSize="20dp"></TextView>
+
+<TextView android:text="" android:id="@+id/TextListen" 
+android:layout_width="fill_parent" android:layout_height="wrap_content" android:textSize="25dp" android:autoLink="all"></TextView>
+</LinearLayout>
