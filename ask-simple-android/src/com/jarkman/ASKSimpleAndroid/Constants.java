@@ -26,7 +26,7 @@ public interface Constants {
   		// to enable the decoder to keep up with the audio on Motorola CLIQ  
 
   // Sound duration of encoded byte (in seconds)
-  public static final double kDuration = 0.2;
+  public static final double kDuration = 0.2; // rps - increased from 0.1 to improve reliability on Android 
 
   // Number of samples per duration
   public static final int kSamplesPerDuration = (int)(kSamplingFrequency * kDuration);
