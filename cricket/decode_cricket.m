@@ -22,7 +22,7 @@
 
 clear all
 close all
-[signal, fs, nbits] = wavread('200cm_2straight_2reverse.wav');
+[signal, fs, nbits] = wavread('signal.wav');
 
 shortsize = 15;
 longsize = 24;
@@ -44,15 +44,19 @@ window = hanning(0.1*fs);
 time = 0:1/fs:(fs*0.1-1)/fs;
 hail = exp(sqrt(-1)*2*pi*time*Freq);
 hail = hail.*window';
-startindex = synchronize(signal(1:fs*5), hail');
+%startindex = synchronize(signal(1:fs*5), hail');
+startindex = finddelay(hail', signal);
+if startindex == 0
+    startindex = 1;
+end
 maxvalue=max(abs(signal(startindex:startindex+length(hail))));
-startindex=startindex+length(hail)
+startindex=startindex+length(hail)-1;
 % normalize
 signal=signal/maxvalue;
 
 winner = 0;
 for i = startindex:framesamples:length(signal)
-    eot=detect(signal(i:i+length(hail)),Freq,fs)
+    eot=detect(signal(i:i+length(hail)),Freq,fs);
     if (eot > 0.15)
         break;
     end
@@ -67,7 +71,7 @@ for i = startindex:framesamples:length(signal)
         power = norm(signal(beggining:beggining + threepacketsamples));
         %figure(2), plot(signal(beggining:beggining + threepacketsamples)),pause
         if power > maxpower
-             maxpower = power;
+            maxpower = power;
             winner = k;
         end
     end

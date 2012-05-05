@@ -37,6 +37,7 @@ FILE = 'data.txt';
 % end
 info = huffencode(datain);
 signal = [];
+encoded = [];
 for i = 1:4:length(info) - 4
     packet = createpacket(info(i:i+4), fs, Freq, framelength);
     signal = [signal, packet];
@@ -52,4 +53,4 @@ signal = [hail signal hail];
 
 %signal = signal + .08*rand(1,length(signal));
 plot(signal);
-wavwrite(signal/max(signal),fs,'signal.wav');
+wavwrite(signal/max(abs(signal)),fs,'signal.wav');

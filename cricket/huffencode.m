@@ -86,3 +86,5 @@ for i = 1:length(input)
         disp(input(i))
     end
 end
+
+output
